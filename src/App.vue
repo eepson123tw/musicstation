@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link>|
   </div>
   <router-view/>
 </template>
@@ -9,7 +9,10 @@
 <script>
 export default {
   mounted () {
-
+    // console.log(this)
+    // this.axios.get('https://randomuser.me/api/').then((res) => {
+    //   console.log(res)
+    // })
   }
 }
 </script>
