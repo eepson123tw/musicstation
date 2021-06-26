@@ -31,6 +31,6 @@ module.exports = {
             }
         }
     },
-    publicPath: process.env.NODE_ENV === 'dev' ? '/musicstation/' : '/'
+    publicPath: process.env.NODE_ENV === 'prod' ? '/musicstation/' : '/'
 
 }
