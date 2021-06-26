@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://vue3-course-api.hexschool.io'
+axios.defaults.baseURL = process.env.VUE_APP_API_URL
 
 axios.interceptors.request.use(
   (confing) => {
