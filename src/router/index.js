@@ -18,12 +18,23 @@ const routes = [{
 {
   path: '/BackStage',
   name: 'BackStage',
-  // route level code-splitting
-  // this generates a separate chunk (about.[hash].js) for this route
-  // which is lazy-loaded when the route is visited.
   component: () =>
     import(/* webpackChunkName: "about" */ '../views/backStage/BackStage.vue'),
   meta: { title: '後台登入頁' }
+},
+{
+  path: '/BackStage/EditProduct',
+  name: 'EditProduct',
+  component: () =>
+    import(/* webpackChunkName: "about" */ '../views/Procudct/EditProduct.vue'),
+  meta: { title: '後台修改頁' }
+},
+{
+  path: '/:pathMatch(.*)*',
+  name: 'Error',
+  component: () =>
+    import(/* webpackChunkName: "about" */ '../views/Error.vue'),
+  meta: { title: '錯誤頁面' }
 }
 ]
 

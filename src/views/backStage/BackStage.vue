@@ -24,6 +24,7 @@
 
 <script>
 import Cookies from 'js-cookie'
+import { apiPostLogin } from '@/api/index.js'
 export default {
   data: () => ({
     loginData: {
@@ -37,20 +38,18 @@ export default {
     }
   }),
   methods: {
-    sendLoginConfirm () {
-      this.axios.post('/admin/signin', this.loginData).then((res) => {
-        // console.log(res.data)
-        if (!res.data.success) {
-          this.message.text = res.data.message
-          this.message.error = res.data.error.message
-          this.message.status = true
-          return
-        }
-        Cookies.set('success', res.data.success)
-        Cookies.set('uid', res.data.uid)
-        Cookies.set('token', res.data.token)
-        this.$router.push('/')
-      })
+    async sendLoginConfirm () {
+      const res = await apiPostLogin(this.loginData)
+      if (!res.data.success) {
+        this.message.text = res.data.message
+        this.message.error = res.data.error.message
+        this.message.status = true
+        return
+      };
+      Cookies.set('success', res.data.success)
+      Cookies.set('uid', res.data.uid)
+      Cookies.set('token', res.data.token)
+      this.$router.push('/BackStage/EditProduct')
     },
     checkUserNamethandler () {
       // this.username

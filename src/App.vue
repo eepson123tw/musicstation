@@ -34,8 +34,6 @@ export default {
   },
   mounted () {
     this.page = false
-    console.log('process', process.env.VUE_APP_API_URL)
-    console.log('process', process.env.VUE_APP_API_URL)
   }
 
 }
