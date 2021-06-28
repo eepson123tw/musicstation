@@ -1,5 +1,6 @@
 <template>
   <article class="article article-card container">
+      <h3 class="sr-only">播放卡片區塊</h3>
     <section class="section section-card row mt-5">
       <div class="carditem col-4">
         <div class="card-img">
@@ -36,7 +37,8 @@ export default {
       background-color: #333e;
       padding: 10px;
       box-sizing: border-box;
-     transition:  all 0.3s;
+      cursor: pointer;
+      transition:  all 0.3s;
       &:hover{
       border: 1px solid #fff4;
       background-color: #fff4;
@@ -87,6 +89,12 @@ export default {
         height: 100%;
         object-fit: cover;
       }
+    }
+     .sr-only{
+      width: 1px;
+      height: 1px;
+      position:absolute;
+      overflow: hidden;
     }
 
 </style>
