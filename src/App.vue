@@ -29,7 +29,7 @@ export default {
     page (val) {
       setTimeout(() => {
         this.page = false
-      }, 1000)
+      }, 500)
     }
   },
   mounted () {

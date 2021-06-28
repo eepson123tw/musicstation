@@ -1,12 +1,16 @@
 <template>
 <section>
     <h2>修改商品列表</h2>
-    <p class="text-end px-1 mb-3"><button class=" btn btn-outline-success">新增</button></p>
+    <div class="text-end px-1 mb-4">
+        <button class=" btn btn-outline-success" @click="editCurrentProductHandler">新增項目</button>
+        <button class=" btn btn-outline-warning" @click="userLogout">使用者登出</button>
+    </div>
     <table class="table table-primary table-striped">
     <thead>
           <tr>
             <th scope="col">編號</th>
             <th scope="col">Id</th>
+             <th scope="col">是否上架</th>
             <th scope="col">種類</th>
             <th scope="col">名稱</th>
             <th scope="col">描述</th>
@@ -20,6 +24,7 @@
           <tr v-for='(item,index) of productList' :key="item.id">
             <th scope="row">{{index+1}}</th>
             <td>{{item.id}}</td>
+            <td><input type="checkbox" readonly :checked="item.is_enabled"></td>
             <td>{{item.category}}</td>
             <td>{{item.content}}</td>
             <td>{{item.description}}</td>
@@ -30,48 +35,71 @@
           </tr>
     </tbody>
   </table>
-  <EditProduct :key="editCurrentProduct" :item="editCurrentProduct" v-model:is-close="isModalShow" v-if="isModalShow"></EditProduct>
+  <EditProduct @isLoadingDone="isLoadingDoneHandler" @updateProductlist='productListHandler' :key="editCurrentProduct" :item="editCurrentProduct" v-model:is-close="isModalShow" v-if="isModalShow"></EditProduct>
+  <Loading v-show="!isLoadingDone"></Loading>
 </section>
 </template>
 
 <script>
 import EditProduct from '@/components/Modal/EditProduct.vue'
+import Loading from '@/components/Loading/Loading.vue'
+import Cookies from 'js-cookie'
 export default {
   components: {
-    EditProduct
+    EditProduct,
+    Loading
   },
   data: () => ({
     productLists: [],
     editCurrentProduct: {},
-    isModalShow: false
+    isModalShow: false,
+    isLoadingDone: false
   }),
   computed: {
     productList () {
       const ary = Object.values(this.productLists)
-      console.log(ary)
       return ary
     }
   },
   methods: {
-    editCurrentProductHandler (item) {
+    isLoadingDoneHandler (val) {
+      this.isModalShow = val
+    },
+    editCurrentProductHandler (item = []) {
       this.editCurrentProduct = item
       this.isModalShow = !this.isModalShow
     },
     deleteCurrentProductHandler (item) {
-      console.log(item)
       this.axios.delete(`/api/${process.env.VUE_APP_API_PATH}/admin/product/${item.id}`).then((res) => {
-        console.log(res)
+        if (res.data !== undefined) {
+          this.isLoadingDone = false
+        };
       }).then(() => {
         this.axios.get(`/api/${process.env.VUE_APP_API_PATH}/admin/products/all`).then((res) => {
+          this.isLoadingDone = true
           this.productLists = res.data.products
         })
+      })
+    },
+    userLogout () {
+      this.axios.post('/logout').then((res) => {
+        Cookies.remove('success')
+        Cookies.set('uid')
+        Cookies.set('token')
+        this.$router.push('/BackStage')
+      })
+    },
+    productListHandler () {
+      this.axios.get(`/api/${process.env.VUE_APP_API_PATH}/admin/products/all`).then((res) => {
+        if (res.data !== undefined) {
+          this.isLoadingDone = true
+        };
+        this.productLists = res.data.products
       })
     }
   },
   mounted () {
-    this.axios.get(`/api/${process.env.VUE_APP_API_PATH}/admin/products/all`).then((res) => {
-      this.productLists = res.data.products
-    })
+    this.productListHandler()
   }
 }
 </script>
@@ -94,5 +122,7 @@ export default {
          line-height: 2.5;
       }
     }
-
+   div > button.btn:first-child{
+    margin-right: 15px;
+   }
 </style>

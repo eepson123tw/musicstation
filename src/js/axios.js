@@ -8,7 +8,7 @@ if (Cookies.get('token')) {
 
 axios.interceptors.request.use(
   (confing) => {
-    console.log('攔截請求')
+    // console.log('攔截請求')
     // console.log('process', process.env.VUE_APP_API_URL)
     return confing
   },
@@ -19,7 +19,7 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   (response) => {
-    console.log('攔截回應')
+    // console.log('攔截回應')
     return response
   },
   (error) => {
