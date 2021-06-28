@@ -17,7 +17,7 @@ export default {
       width: 1400px;
       height:500px;
       padding: 50px;
-      background-color: #333;
+      background-color: transparent;
       top: 50%;
       left: 50%;
       transform: translate(-50%,-50%);

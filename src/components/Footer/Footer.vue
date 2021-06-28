@@ -42,7 +42,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
   footer{
-     background-color: #0001;
+     background-color: #000000;
      color: white;
      padding: 10px;
   }
@@ -62,12 +62,12 @@ export default {
     ul a{
         display: block;
         text-align: center;
-        color: black;
+        color: $white;
         text-decoration: none;
         margin-bottom: 10px;
         transition: all .3s;
         &:hover{
-          color: $yellow-800
+          color: $yellow-200
         }
       }
 
@@ -95,7 +95,7 @@ export default {
       width: 100%;
       p{
         margin-right: 5px;
-        color: #0006;
+        color:  $white;
       }
     }
       .sr-only{

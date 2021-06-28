@@ -26,7 +26,7 @@
             <td>{{item.id}}</td>
             <td><input type="checkbox" readonly :checked="item.is_enabled"></td>
             <td>{{item.category}}</td>
-            <td>{{item.content}}</td>
+            <td>{{item.title}}</td>
             <td>{{item.description}}</td>
             <td>{{item.origin_price}}</td>
             <td>{{item.price}}</td>
@@ -105,7 +105,8 @@ export default {
 </script>
 <style lang="scss" scoped>
     section{
-      margin: 100px 0;
+      margin: 100px 0 250px 0;
+      padding: 20px;
       >h2{
         margin-bottom: 20px;
       }

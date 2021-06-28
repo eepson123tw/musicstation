@@ -44,11 +44,24 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  width: 1400px;
-  height: 100%;
-  margin: 0 auto;
+  background-color: #121212;
+  // overflow-y: scroll;
 }
+
+  body::-webkit-scrollbar {
+  /*滾動條整體樣式*/ width: 10px;
+  /*高寬分別對應橫豎滾動條的尺寸*/ height: 1px;
+  }
+  body::-webkit-scrollbar-thumb {
+    /*滾動條裡面小方塊*/
+    // border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); background: rgb(255, 238, 0);
+    }
+  body::-webkit-scrollbar-track {
+    /*滾動條裡面軌道*/
+    //  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); border-radius: 10px;
+      background: #EDEDED;
+      }
 
 html,body{
   width: 100%;
