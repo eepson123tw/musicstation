@@ -61,7 +61,7 @@ export default {
     }
   },
   mounted () {
-    this.axios.get(`/api/${process.env.VUE_APP_API_PATH}/admin/products/all`).then((res) => {
+    this.axios.get(`/api/${process.env.VUE_APP_API_PATH}/products/all`).then((res) => {
       this.list = res.data.products
     })
     window.addEventListener('scroll', this.scrollHandler)
