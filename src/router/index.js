@@ -23,6 +23,20 @@ const routes = [{
   meta: { title: '後台登入頁' }
 },
 {
+  path: '/Product',
+  name: 'Product',
+  component: () =>
+    import(/* webpackChunkName: "about" */ '../views/Product/Product.vue'),
+  meta: { title: '更多音樂頁' }
+},
+{
+  path: '/Cart',
+  name: 'Cart',
+  component: () =>
+    import(/* webpackChunkName: "about" */ '../views/Cart/Cart.vue'),
+  meta: { title: '購物車' }
+},
+{
   path: '/BackStage/EditProduct',
   name: 'EditProduct',
   component: () =>

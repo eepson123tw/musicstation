@@ -7,7 +7,7 @@
       <nav class="flex-grow-2">
             <h3 class="sr-only">導覽區塊</h3>
             <ul class="d-flex  justify-content-between">
-              <li><a href="" class="fs-6">更多音樂</a></li>
+              <li><router-link to="/product" class="fs-6">更多音樂</router-link></li>
               <li><a href="" class="fs-6">關於我們</a></li>
               <li><a href="" class="fs-6">我的最愛</a></li>
             </ul>
