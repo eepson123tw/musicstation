@@ -13,7 +13,7 @@
           </div>
         </div>
        <transition-group name="fade">
-        <div class="product-group col-3" v-for="item of productsList " :key="item.id">
+        <div class="product-group col-3" v-for="item of productsList" :key="item">
           <div class="product-img">
             <img :src="item.imageUrl" alt="">
           </div>
@@ -57,7 +57,7 @@ export default {
   },
   computed: {
     productsList () {
-      return Object.values(this.list).splice(this.startIdx, this.showCard)
+      return Object.values(this.list).splice(this.startIdx, this.showCard) || []
     }
   },
   mounted () {
