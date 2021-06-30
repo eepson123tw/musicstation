@@ -8,16 +8,19 @@
             <img src="@/assets/img/sand-clock.png" alt="">
         </div>
     </transition>
+    <Icon></Icon>
     </div>
 </template>
 
 <script>
 import Header from '@/components/Header/Header.vue'
 import Footer from '@/components/Footer/Footer.vue'
+import Icon from '@/components/CartIcon/Icon.vue'
 export default {
   components: {
     Header,
-    Footer
+    Footer,
+    Icon
   },
   data: () => ({
     page: true
@@ -113,5 +116,4 @@ html,body{
 .fade-leave-to {
   opacity: 0;
 }
-
 </style>

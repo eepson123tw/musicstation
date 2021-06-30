@@ -30,6 +30,13 @@ const routes = [{
   meta: { title: '更多音樂頁' }
 },
 {
+  path: '/Product/:id',
+  name: 'id',
+  component: () =>
+    import(/* webpackChunkName: "about" */ '../views/Product/_id.vue'),
+  meta: { title: '單一產品頁' }
+},
+{
   path: '/Cart',
   name: 'Cart',
   component: () =>

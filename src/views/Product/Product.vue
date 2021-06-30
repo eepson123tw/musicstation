@@ -13,7 +13,7 @@
           </div>
         </div>
        <transition-group name="fade">
-        <div class="product-group col-3" v-for="item of productsList" :key="item">
+        <div class="product-group col-3" v-for="item of productsList" :key="item" @click="routerChangeHandler(item.id)">
           <div class="product-img">
             <img :src="item.imageUrl" alt="">
           </div>
@@ -36,6 +36,14 @@ export default {
     loading: false
   }),
   methods: {
+    routerChangeHandler (val) {
+      this.$router.push({
+        name: 'id',
+        params: {
+          id: val
+        }
+      })
+    },
     scrollHandler () {
       if (this.loading) {
         return
